@@ -15,6 +15,10 @@ It also includes:
 
 BladeCore-M40 is not locked into any specific use case — it is meant to be reconfigured as needed.
 
+<p align="center">
+    <img src="images/BladeCore-M40_3D-1.png" alt="3D Render" width="800"/>
+</p>
+
 ---
 
 ## Highlights
@@ -31,19 +35,6 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 
 ---
 
-## Images
-
-<p align="left">
-    <img src="images/BladeCore-M40_Top.png" alt="Top" width="400"/>
-    <img src="images/BladeCore-M40_Bot.png" alt="Bottom" width="400"/>
-    <br/>
-</p>
-<p align="left">
-    <img src="images/BladeCore-M40_3D-1.png" alt="3D Render" width="800"/>
-</p>
-
----
-
 ## Stackup
 
 **JLC06081H-2116 (Finished Thickness: ~0.83 mm ±0.10 mm) – 6 Layers**
@@ -53,6 +44,13 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 - Outer Copper Weight: 1 oz  
 - Inner Copper Weight: 0.5 oz  
 - Prepreg & Core Materials: FR4 (JLC06081H-2116)
+
+<p align="left">
+    <img src="images/BladeCore-M40_Top.png" alt="Top" width="400"/>
+</p>
+<p align="left">
+    <img src="images/BladeCore-M40_Bot.png" alt="Bottom" width="400"/>
+</p>
 
 | Layer | Description     | Material                      | Thickness (mm) |
 |-------|------------------|-------------------------------|----------------|
@@ -84,12 +82,12 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 | 7   | GP12        | I/O       |             |
 | 8   | GP26        | I/O       | ADC Channel 0 |
 | 9   | GP11        | I/O       |             |
-| 10  | GP25        | I/O       | USB MUX Select. For normal functionality, remove R11 and populate R5 (RP2040 USB) or R7 (FT232 USB). Default: R11 = 0Ω, R5 = 10K, R7 = DNI. |
+| 10  | GP25        | I/O       | USB MUX Select. For normal functionality, remove M1 and populate M3 (RP2040 USB) or M2 (FT232 USB). Default: M1 = 0Ω, M3 = 10K, M2 = DNI. |
 | 11  | GP10        | I/O       |             |
 | 12  | GP24        | I/O       |             |
-| 13  | GP9         | I/O       | UART1 TX. Connected to FT232 via R12 (DNI). |
+| 13  | GP9         | I/O       | UART1 RX. Connected to FT232 via R01 (DNI). |
 | 14  | GP23        | I/O       |             |
-| 15  | GP8         | I/O       | UART1 RX. Connected to FT232 via R13 (DNI). |
+| 15  | GP8         | I/O       | UART1 TX. Connected to FT232 via T11 (DNI). |
 | 16  | GP22        | I/O       |             |
 | 17  | GP7         | I/O       |             |
 | 18  | GP21        | I/O       |             |
@@ -103,9 +101,9 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 | 26  | GP17        | I/O       |             |
 | 27  | GP2         | I/O       |             |
 | 28  | GP16        | I/O       |             |
-| 29  | GP1         | I/O       | UART0 RX. Connected to FT232 via R31 (0Ω). |
+| 29  | GP1         | I/O       | UART0 RX. Connected to FT232 via M1 (0Ω). |
 | 30  | GND         | —         |             |
-| 31  | GP0         | I/O       | UART0 TX. Connected to FT232 via R29 (0Ω). |
+| 31  | GP0         | I/O       | UART0 TX. Connected to FT232 via T01 (0Ω). |
 | 32  | NC          | —         | No functionality, used by BladeCore-M54. |
 | 33  | GND         | —         |             |
 | 34  | NC          | —         | No functionality, used by BladeCore-M54. |
@@ -146,26 +144,24 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 ## Misc: Core Voltage & Overclocking
 
 To overclock the MCU, it's possible to supply more than 1.1 V to the core.  
-By default, **external core voltage generation** is enabled using the **AP7335-WG-7**, which is activated via **R17**.  
+By default, **external core voltage generation** is enabled using the **AP7335-WG-7**, which is activated via **J1**.  
 The output voltage is set by adjusting the **R1 trimpot**.
 
 > ⚠️ It is safe — the voltage range is limited by design and cannot damage the MCU.
 
 ### Voltage Range (Set by Divider)
 
-| R7 (Trimpot) | Total Resistance (R6 + R7) | VOUT (approx) |
+| R1 (Trimpot) | Total Resistance (R28 + R1) | VOUT (approx) |
 |--------------|----------------------------|----------------|
 | 25 kΩ (max)  | 47 kΩ                       | 1.02 V         |
 | 12.5 kΩ      | 34.5 kΩ                     | 1.14 V         |
 | 0 Ω (min)    | 22 kΩ                       | 1.22 V         |
 
----
-
 ### Use Cases
 
-- **Low Power Mode:** R7 = 25 kΩ → ~1.02 V  
-- **Default / Safe:** R7 = 12.5 kΩ → ~1.14 V  
-- **High Performance / Overclocking:** R7 = 0 Ω → ~1.22 V  
+- **Low Power Mode:** R1 = 25 kΩ → ~1.02 V  
+- **Default / Safe:** R1 = 12.5 kΩ → ~1.14 V  
+- **High Performance / Overclocking:** R1 = 0 Ω → ~1.22 V  
 
 ---
 
@@ -173,13 +169,13 @@ The output voltage is set by adjusting the **R1 trimpot**.
 
 To use the **internally generated core voltage** (from RP2040's internal LDO):
 
-1. Move **R17 → R18**  
-2. Populate **R30** with a 0 Ω jumper  
+1. Move **J1 → J2**  
+2. Populate **J3** with a 0 Ω jumper  
 
 **Default configuration:**
-- R17 = 10 kΩ  
-- R18 = DNI  
-- R30 = DNI
+- J1 = 10 kΩ  
+- J2 = DNI  
+- J3 = DNI
 
 
 ---

@@ -161,7 +161,60 @@ The output voltage is set by adjusting the **R1 trimpot**.
 - **Default / Safe:** R1 = 12.5 kΩ → ~1.14 V  
 - **High Performance / Overclocking:** R1 = 0 Ω → ~1.22 V  
 
+### VOUT Behavior Across Temperatures and Trim Settings
+
+The AP7335-WG-7 regulator is affected by temperature-dependent reference voltage (VREF), output voltage accuracy, and resistor tolerances.  
+This section outlines the **worst-case VOUT values** at cold, normal, and hot temperatures, across all trimpot settings.
+
+> ⚙️ **Calculation Parameters:**
+> - VOUT Accuracy: ±2% (from AP7335-WG-7 datasheet)
+> - VREF Variation: Based on VREF vs. Temperature graph  
+>   - −50 °C → 0.89 V  
+>   - 25 °C → 0.80 V  
+>   - 125 °C → 0.782 V
+> - Resistors used: 1% tolerance (R27 = 12 kΩ, R28 = 22 kΩ, R1 = 0–25 kΩ trimpot)
+
+The RP2040's **absolute maximum core voltage is 1.3 V** — values exceeding this may cause damage.
+
 ---
+
+### ❄️ Cold (–50 °C, VREF = 0.89 V)
+
+**Max Trim (R1 = 25 kΩ, Rb = 47 kΩ)**  
+VOUT: **1.090 V – 1.144 V** ✅ Safe
+
+**Mid Trim (R1 = 12.5 kΩ, Rb = 34.5 kΩ)**  
+VOUT: **1.170 V – 1.230 V** ✅ Safe
+
+**Min Trim (R1 = 0 Ω, Rb = 22 kΩ)**  
+VOUT: **1.339 V – 1.413 V** ❌ Danger – exceeds RP2040 1.3 V limit
+
+---
+
+### 🌤️ Normal (25 °C, VREF = 0.80 V)
+
+**Max Trim (R1 = 25 kΩ, Rb = 47 kΩ)**  
+VOUT: **0.980 V – 1.029 V** ✅ Safe
+
+**Mid Trim (R1 = 12.5 kΩ, Rb = 34.5 kΩ)**  
+VOUT: **1.051 V – 1.106 V** ✅ Safe
+
+**Min Trim (R1 = 0 Ω, Rb = 22 kΩ)**  
+VOUT: **1.201 V – 1.265 V** ✅ Safe
+
+---
+
+### 🔥 Hot (125 °C, VREF = 0.782 V)
+
+**Max Trim (R1 = 25 kΩ, Rb = 47 kΩ)**  
+VOUT: **0.958 V – 1.005 V** ✅ Safe
+
+**Mid Trim (R1 = 12.5 kΩ, Rb = 34.5 kΩ)**  
+VOUT: **1.028 V – 1.082 V** ✅ Safe
+
+**Min Trim (R1 = 0 Ω, Rb = 22 kΩ)**  
+VOUT: **1.180 V – 1.243 V** ✅ Safe
+
 
 ### Switching to Internal Core LDO
 

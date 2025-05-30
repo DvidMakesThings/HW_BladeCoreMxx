@@ -47,8 +47,6 @@ BladeCore-M40 is not locked into any specific use case — it is meant to be rec
 
 <p align="left">
     <img src="images/BladeCore-M40_Top.png" alt="Top" width="400"/>
-</p>
-<p align="left">
     <img src="images/BladeCore-M40_Bot.png" alt="Bottom" width="400"/>
 </p>
 

@@ -4505,7 +4505,7 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="R28" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="22K"/>
 <part name="R1" library="Resistor_Capacitor" library_urn="urn:adsk.eagle:library:15122775" deviceset="35WR10KLFTR" device="" package3d_urn="urn:adsk.eagle:package:10872895/3" value="25K"/>
 <part name="GND2" library="ds_passive" deviceset="GND" device=""/>
-<part name="R30" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
+<part name="J3" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
 <part name="C30" library="ds_passive" deviceset="C" device="-0402" package3d_urn="urn:adsk.eagle:package:46766485/2" value="4.7uF"/>
 <part name="C9" library="ds_passive" deviceset="C" device="-0201" package3d_urn="urn:adsk.eagle:package:47403530/3" value="100nF"/>
 <part name="C31" library="ds_passive" deviceset="C" device="-0402" package3d_urn="urn:adsk.eagle:package:46766485/2" value="4.7uF"/>
@@ -4568,8 +4568,8 @@ Feel free to contact us at &lt;a href="mailto:Support@PCBLayout.com"&gt;Support@
 <part name="NC26" library="ds_passive" deviceset="NC" device=""/>
 <part name="NC27" library="ds_passive" deviceset="NC" device=""/>
 <part name="R11" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="0R"/>
-<part name="R17" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="0R"/>
-<part name="R18" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
+<part name="J1" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="0R"/>
+<part name="J2" library="ds_passive" deviceset="R" device="0201" package3d_urn="urn:adsk.eagle:package:47403529/3" value="DNI"/>
 </parts>
 <sheets>
 <sheet>
@@ -4833,7 +4833,7 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <instance part="GND2" gate="1" x="728.98" y="99.06" smashed="yes">
 <attribute name="VALUE" x="728.98" y="96.52" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="R30" gate="G$1" x="439.42" y="254" smashed="yes" rot="R270">
+<instance part="J3" gate="G$1" x="439.42" y="254" smashed="yes" rot="R270">
 <attribute name="NAME" x="436.245" y="255.4986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="438.785" y="250.698" size="1.778" layer="96"/>
 </instance>
@@ -4946,11 +4946,11 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <attribute name="NAME" x="450.469" y="190.9826" size="1.778" layer="95"/>
 <attribute name="VALUE" x="460.375" y="191.008" size="1.778" layer="96"/>
 </instance>
-<instance part="R17" gate="G$1" x="665.48" y="132.08" smashed="yes" rot="MR0">
+<instance part="J1" gate="G$1" x="665.48" y="132.08" smashed="yes" rot="MR0">
 <attribute name="NAME" x="666.9786" y="128.905" size="1.778" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="662.178" y="131.445" size="1.778" layer="96" rot="MR90"/>
 </instance>
-<instance part="R18" gate="G$1" x="665.48" y="116.84" smashed="yes" rot="MR0">
+<instance part="J2" gate="G$1" x="665.48" y="116.84" smashed="yes" rot="MR0">
 <attribute name="NAME" x="666.9786" y="113.665" size="1.778" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="662.178" y="116.205" size="1.778" layer="96" rot="MR90"/>
 </instance>
@@ -5081,7 +5081,7 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="678.18" y1="132.08" x2="675.64" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="675.64" y1="132.08" x2="675.64" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="R18" gate="G$1" pin="2"/>
+<pinref part="J2" gate="G$1" pin="2"/>
 <wire x1="675.64" y1="109.22" x2="675.64" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="665.48" y1="111.76" x2="665.48" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="665.48" y1="109.22" x2="675.64" y2="109.22" width="0.1524" layer="91"/>
@@ -5625,7 +5625,7 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <pinref part="C30" gate="G$1" pin="1"/>
 <wire x1="657.86" y1="132.08" x2="657.86" y2="139.7" width="0.1524" layer="91"/>
 <junction x="657.86" y="139.7"/>
-<pinref part="R17" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="665.48" y1="137.16" x2="665.48" y2="139.7" width="0.1524" layer="91"/>
 <junction x="665.48" y="139.7"/>
 </segment>
@@ -5826,7 +5826,7 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <pinref part="IC4" gate="PWR" pin="DVDD2"/>
 </segment>
 <segment>
-<pinref part="R30" gate="G$1" pin="2"/>
+<pinref part="J3" gate="G$1" pin="2"/>
 <wire x1="434.34" y1="254" x2="391.16" y2="254" width="0.1524" layer="91"/>
 <label x="391.16" y="254" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -5870,7 +5870,7 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 </net>
 <net name="VREGO" class="0">
 <segment>
-<pinref part="R30" gate="G$1" pin="1"/>
+<pinref part="J3" gate="G$1" pin="1"/>
 <wire x1="444.5" y1="254" x2="449.58" y2="254" width="0.1524" layer="91"/>
 <label x="472.44" y="256.54" size="1.778" layer="95" rot="R180"/>
 <pinref part="IC4" gate="PWR" pin="VREG_VOUT"/>
@@ -5921,8 +5921,8 @@ Trim min (0) → VOUT ≈ 1.24 V</text>
 <pinref part="IC8" gate="G$1" pin="EN"/>
 <wire x1="678.18" y1="137.16" x2="670.56" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="670.56" y1="137.16" x2="670.56" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="R17" gate="G$1" pin="2"/>
-<pinref part="R18" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="2"/>
+<pinref part="J2" gate="G$1" pin="1"/>
 <wire x1="665.48" y1="121.92" x2="665.48" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="665.48" y1="124.46" x2="665.48" y2="127" width="0.1524" layer="91"/>
 <wire x1="670.56" y1="124.46" x2="665.48" y2="124.46" width="0.1524" layer="91"/>
